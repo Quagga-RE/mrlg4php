@@ -226,7 +226,7 @@
 		}
 		if ($request[$requestid]["argc"] > 0)
 		{
-			if (empty($_REQUEST["argument"]))
+			if (empty (trim ($_REQUEST["argument"])))
 			{
 				$router_defined = isset ($router[$routerid]["ignore_argc"]);
 				$router_permits = $router[$routerid]["ignore_argc"] == 1;
@@ -241,7 +241,7 @@
 					return;
 				}
 			}
-			else $argument = $_REQUEST["argument"];
+			else $argument = trim ($_REQUEST["argument"]);
 		}
 		// All Ok, do telnet
 		$address = $router[$routerid]["address"];
@@ -294,7 +294,7 @@
 				<td valign=top><b>request:</b><br><? printRequestList ($request, $request_list_style) ?></td>
 			</tr>
 			<tr>
-				<td><b>argument:</b> <input type=text name=argument length=20 maxlength=50<? echo " value='" . safeOutput ($_REQUEST["argument"] . "'"); ?>></td>
+				<td><b>argument:</b> <input type=text name=argument length=20 maxlength=50<? echo " value='" . safeOutput (trim ($_REQUEST["argument"]) . "'"); ?>></td>
 				<td><input type=submit value="Execute"></td>
 			</tr>
 		</form>
@@ -303,7 +303,7 @@
 		</center>
 		<hr>
 		<small>
-		MRLG for PHP version 1.04, Copyright &copy; 2002 Denis Ovsienko<br>
+		MRLG for PHP version 1.0.5, Copyright &copy; 2002 Denis Ovsienko<br>
 		MRLG for PHP comes with ABSOLUTELY NO WARRANTY; for details see source code.
 		This is free software, and you are welcome to redistribute it
 		under certain conditions; see source code for details.
