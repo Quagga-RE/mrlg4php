@@ -1,8 +1,8 @@
 <?
- /*  Version 1.04
+ /*  Version 1.0.6
   *  MRLG for PHP --- multi router looking glass for GNU Zebra and
   *  Cisco IOS routers, written for PHP-enabled web-server.
-  *  Copyright (C) 2002 Denis Ovsienko
+  *  Copyright (C) 2002-2004 Denis Ovsienko
   *
   *  This program is free software; you can redistribute it and/or modify
   *  it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@
 	$router[20]["address"] = "router2.some.net";
 	$router[20]["services"] = "zebra ospfd";
 
-	$router[30]["address"] = "border router";
+	$router[30]["title"] = "border router";
 	$router[30]["address"] = "192.168.0.1";
 	$router[30]["services"] = "bgpd";
 
@@ -226,7 +226,7 @@
 		}
 		if ($request[$requestid]["argc"] > 0)
 		{
-			if (empty (trim ($_REQUEST["argument"])))
+			if (trim ($_REQUEST["argument"]) == '')
 			{
 				$router_defined = isset ($router[$routerid]["ignore_argc"]);
 				$router_permits = $router[$routerid]["ignore_argc"] == 1;
@@ -303,7 +303,7 @@
 		</center>
 		<hr>
 		<small>
-		MRLG for PHP version 1.0.5, Copyright &copy; 2002 Denis Ovsienko<br>
+		MRLG for PHP version 1.0.6, Copyright &copy; 2002-2004 Denis Ovsienko<br>
 		MRLG for PHP comes with ABSOLUTELY NO WARRANTY; for details see source code.
 		This is free software, and you are welcome to redistribute it
 		under certain conditions; see source code for details.
