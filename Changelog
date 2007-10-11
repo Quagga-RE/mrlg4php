@@ -1,3 +1,7 @@
+1.0.7 20071011
+- use external config file and function library
+- save memory on huge responses
+
 1.0.6 20040711
 - real fix
 - code corrections
