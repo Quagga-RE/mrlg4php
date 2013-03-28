@@ -18,7 +18,6 @@
   *  along with this program; if not, write to the Free Software
   *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   *
-  *  Author can be reached at his homepage: http://pilot.org.ua/
   */
 
 ?>
@@ -62,8 +61,8 @@ else
 		</center>
 		<hr>
 		<small>
-		<a href='http://pilot.org.ua/mrlg'>MRLG for PHP</a> version 1.0.7, Copyright &copy; 2002-2007
-		<a href='http://pilot.org.ua/'>Denis Ovsienko</a>, comes with ABSOLUTELY NO WARRANTY; for
+		<a href='https://github.com/infrastation/mrlg4php'>MRLG for PHP</a> version 1.0.7, Copyright &copy; 2002-2007
+		Denis Ovsienko, comes with ABSOLUTELY NO WARRANTY; for
 		details see source code. This is free software, and you are welcome to redistribute it
 		under certain conditions; see source code for details.
 		</small>
