@@ -1,4 +1,4 @@
-<?
+<?php
  /*  Version 1.0.7
   *  MRLG for PHP --- multi router looking glass for GNU Zebra and
   *  Cisco IOS routers, written for PHP-enabled web-server.

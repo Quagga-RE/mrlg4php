@@ -1,4 +1,4 @@
-<?
+<?php
  /*  Version 1.0.7
   *  MRLG for PHP --- multi router looking glass for GNU Zebra and
   *  Cisco IOS routers, written for PHP-enabled web-server.
@@ -29,7 +29,7 @@
 	<body>
 		<center>
 		<h1>Multi-router looking glass</h1>
-<?
+<?php
 // MRLG4PHP is shipped with mrlg-config-sample.php, copy it into
 // mrlg-config.php and adjust to your needs. Until this is done,
 // the script will not work.
@@ -43,19 +43,19 @@ else
 {
 ?>
 		<table border=0>
-		<form method=post action=<? echo $_SERVER[PHP_SELF]; ?>>
+		<form method=post action=<?php echo $_SERVER[PHP_SELF]; ?>>
 			<tr>
-				<td valign=top><b>router:</b><br><? printRouterList ($router, $router_list_style); ?></td>
-				<td valign=top><b>request:</b><br><? printRequestList ($request, $request_list_style) ?></td>
+				<td valign=top><b>router:</b><br><?php printRouterList ($router, $router_list_style); ?></td>
+				<td valign=top><b>request:</b><br><?php printRequestList ($request, $request_list_style) ?></td>
 			</tr>
 			<tr>
-				<td><b>argument:</b> <input type=text name=argument length=20 maxlength=50<? echo " value='" . safeOutput (trim ($_REQUEST["argument"]) . "'"); ?>></td>
+				<td><b>argument:</b> <input type=text name=argument length=20 maxlength=50<?php echo " value='" . safeOutput (trim ($_REQUEST["argument"]) . "'"); ?>></td>
 				<td><input type=submit value="Execute"></td>
 			</tr>
 		</form>
-			<tr><td colspan=2><hr><b>result:</b><br><? execPreviousRequest ($router, $request); ?></td></tr>
+			<tr><td colspan=2><hr><b>result:</b><br><?php execPreviousRequest ($router, $request); ?></td></tr>
 		</table>
-<?
+<?php
 }
 ?>
 		</center>
