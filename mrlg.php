@@ -43,7 +43,7 @@ else
 {
 ?>
 		<table border=0>
-		<form method=post action=<?php echo $_SERVER[PHP_SELF]; ?>>
+		<form method=post>
 			<tr>
 				<td valign=top><b>router:</b><br><?php printRouterList ($router, $router_list_style); ?></td>
 				<td valign=top><b>request:</b><br><?php printRequestList ($request, $request_list_style) ?></td>
