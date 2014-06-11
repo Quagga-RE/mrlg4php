@@ -30,6 +30,14 @@ function safeOutput ($string)
 	return htmlentities (substr ($string, 0, 50));
 }
 
+function safeInputArg ($argname)
+{
+	if (! array_key_exists ($argname, $_REQUEST))
+		return NULL;
+	$value = trim ($_REQUEST[$argname]);
+	return preg_match ('/^[A-Za-z0-9_:\.\/\-]*$/', $value) ? $value : NULL;
+}
+
 function printRouterList ($router, $type)
 {
 	if ($type == "select") echo "<select name=routerid>\n";
@@ -88,7 +96,8 @@ function execPreviousRequest ($router, $request)
 	}
 	if ($request[$requestid]["argc"] > 0)
 	{
-		if (trim ($_REQUEST["argument"]) == '')
+		$safe = safeInputArg ('argument');
+		if ($safe == '')
 		{
 			$router_defined = isset ($router[$routerid]["ignore_argc"]);
 			$router_permits = $router[$routerid]["ignore_argc"] == 1;
@@ -103,7 +112,8 @@ function execPreviousRequest ($router, $request)
 				return;
 			}
 		}
-		else $argument = trim ($_REQUEST["argument"]);
+		else
+			$argument = $safe;
 	}
 	// All Ok, prepare to connect.
 	$address = $router[$routerid]["address"];

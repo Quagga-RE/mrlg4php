@@ -49,7 +49,7 @@ else
 				<td valign=top><b>request:</b><br><?php printRequestList ($request, $request_list_style) ?></td>
 			</tr>
 			<tr>
-				<td><b>argument:</b> <input type=text name=argument length=20 maxlength=50<?php echo " value='" . safeOutput (trim ($_REQUEST["argument"]) . "'"); ?>></td>
+				<td><b>argument:</b> <input type=text name=argument length=20 maxlength=50 value='<?php echo safeOutput (safeInputArg ('argument')); ?>'></td>
 				<td><input type=submit value="Execute"></td>
 			</tr>
 		</form>
