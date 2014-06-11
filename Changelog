@@ -1,3 +1,7 @@
+1.0.8 20140611
+- fix CVE-2014-3927
+- fix some PHP style issues
+
 1.0.7 20071011
 - use external config file and function library
 - save memory on huge responses
