@@ -22,7 +22,7 @@
 
 function printError ($message)
 {
-	echo "<font color=red><code><strong>" . $message . "</strong></code></font><br>\n";
+	echo "<font color=red><code><strong>{$message}</strong></code></font><br>\n";
 }
 
 function safeOutput ($string)
@@ -40,42 +40,57 @@ function safeInputArg ($argname)
 
 function printRouterList ($router, $type)
 {
-	if ($type == "select") echo "<select name=routerid>\n";
+	if ($type == "select")
+		echo "<select name=routerid>\n";
 	while (list ($id, $attribute) = each ($router))
 		if (strcmp ($id, "default") && !empty($attribute["address"]))
 		{
-			if ($type == "select") echo "<option value={$id}";
-			if ($type == "radio") echo "<input type=radio name=routerid value={$id}";
+			if ($type == "select")
+				echo "<option value={$id}";
+			if ($type == "radio")
+				echo "<input type=radio name=routerid value={$id}";
 			if ($_REQUEST["routerid"] == $id)
 			{
-				if ($type == "select") echo " selected=on";
-				if ($type == "radio") echo " checked=on";
+				if ($type == "select")
+					echo " selected=on";
+				if ($type == "radio")
+					echo " checked=on";
 			}
 			echo ">";
 			echo $attribute["title"] ? $attribute["title"] : $attribute["address"];
-			if ($type == "select") echo "</option>\n";
-			if ($type == "radio") echo "</input><br>\n";
+			if ($type == "select")
+				echo "</option>\n";
+			if ($type == "radio")
+				echo "</input><br>\n";
 		}
-	if ($type == "select") echo "</{$type}>\n";
+	if ($type == "select")
+		echo "</{$type}>\n";
 }
 
 function printRequestList ($request, $type)
 {
-	if ($type == "select") echo "<select name=requestid>";
+	if ($type == "select")
+		echo "<select name=requestid>";
 	while (list($id, $attribute) = each ($request))
 		if (!empty ($attribute["command"]) && !empty ($attribute["handler"]) && isset ($attribute["argc"]))
 		{
-			if ($type == "select") echo "<option value={$id}";
-			if ($type == "radio") echo "<input type=radio name=requestid value={$id}";
+			if ($type == "select")
+				echo "<option value={$id}";
+			if ($type == "radio")
+				echo "<input type=radio name=requestid value={$id}";
 			if ($_REQUEST["requestid"] == $id)
 			{
-				if ($type == "select") echo " selected=on";
-				if ($type == "radio") echo " checked=on";
+				if ($type == "select")
+					echo " selected=on";
+				if ($type == "radio")
+					echo " checked=on";
 			}
 			echo ">";
 			echo $attribute["title"] ? $attribute["title"] : $attribute["command"];
-			if ($type == "select") echo "</option>\n";
-			if ($type == "radio") echo "</input><br>\n";
+			if ($type == "select")
+				echo "</option>\n";
+			if ($type == "radio")
+				echo "</input><br>\n";
 		}
 	echo "</{$type}>\n";
 }
@@ -84,10 +99,13 @@ function execPreviousRequest ($router, $request)
 {
 	if (!isset($_REQUEST["routerid"])) return;
 	$routerid = $_REQUEST["routerid"];
-	if (!isset ($router[$routerid]["address"])) return;
-	if (!isset($_REQUEST["requestid"])) return;
+	if (!isset ($router[$routerid]["address"]))
+		return;
+	if (!isset($_REQUEST["requestid"]))
+		return;
 	$requestid = $_REQUEST["requestid"];
-	if (!isset ($request[$requestid]["argc"])) return;
+	if (!isset ($request[$requestid]["argc"]))
+		return;
 	$handler = $request[$requestid]["handler"];
 	if (empty ($handler) || strpos ($router[$routerid]["services"], $handler) === false)
 	{
@@ -137,10 +155,12 @@ function execPreviousRequest ($router, $request)
 	}
 	socket_set_timeout ($link, $socket_timeout);
 	$username = $router[$routerid]["username"];
-	if (!empty ($username)) fputs ($link, "{$username}\n");
+	if (!empty ($username))
+		fputs ($link, "{$username}\n");
 	fputs ($link, "{$password}\nterminal length 0\n{$command}\n");
 	// let daemon print bulk of records uninterrupted
-	if (empty ($argument) && $request[$requestid]["argc"] > 0) sleep (2);
+	if (empty ($argument) && $request[$requestid]["argc"] > 0)
+		sleep (2);
 	fputs ($link, "quit\n");
 	echo "<pre>\n";
 	// Skip text up to the line following out command.
@@ -155,4 +175,3 @@ function execPreviousRequest ($router, $request)
 	echo "</pre>\n";
 	fclose ($link);
 }
-?>

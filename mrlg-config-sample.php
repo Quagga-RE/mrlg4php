@@ -159,4 +159,3 @@
 	$request[110]['handler'] = 'zebra';
 	$request[110]['argc'] = 1;
 
-?>
